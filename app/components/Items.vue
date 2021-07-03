@@ -1,16 +1,32 @@
 <template>
     <Page>
-        <ActionBar>
-            <Label text="Home"></Label>
-        </ActionBar>
-
-        <ListView for="item in items" @itemTap="onItemTap">
-            <v-template>
-                <StackLayout orientation="horizontal">
-                    <Label :text="item.name" textWrap="true"></Label>
-                </StackLayout>
-            </v-template>
-        </ListView>
+      <ActionBar>
+        <StackLayout orientation="vertical" height="200px">
+          <SearchBar
+            hint="Zoeken"
+            :text="searchTerm"
+            @textChange="onTextChanged"
+            @submit="onSubmit"
+          />
+          <label text="ActionBar Title" fontSize="24" verticalAlignment="center" />
+          <label text="ActionBar Title" fontSize="24" verticalAlignment="center" />
+        </StackLayout>
+      </ActionBar>
+      <ScrollView orientation="vertical" height="100%">
+        <WrapLayout orientation="horizontal" margin="5px auto">
+          <label 
+            v-for="(item, index) in items" 
+            :key="index" :text="item.name" 
+            width="48%" 
+            height="200px" 
+            marginLeft="10px"
+            marginBottom="15px"
+            borderRadius="5px"
+            :backgroundColor="item.backColor" 
+            textAlignment="center"
+            color="white" />
+        </WrapLayout>
+      </ScrollView>
     </Page>
 </template>
 
@@ -20,71 +36,84 @@
   export default {
     data() {
       return {
+        searchTerm: '',
         items: [
           {
-            name: "Item 1",
-            description: "Description for Item 1"
+            name: "Xiangyi",
+            backColor: "#313549"
           },
           {
-            name: "Item 2",
-            description: "Description for Item 2"
+            name: "Xiangyi",
+            backColor: "#313549"
           },
           {
-            name: "Item 3",
-            description: "Description for Item 3"
+            name: "Xiangyi",
+            backColor: "#313549"
           },
           {
-            name: "Item 4",
-            description: "Description for Item 4"
+            name: "Xiangyi",
+            backColor: "#313549"
           },
           {
-            name: "Item 5",
-            description: "Description for Item 5"
+            name: "Xiangyi",
+            backColor: "#313549"
           },
           {
-            name: "Item 6",
-            description: "Description for Item 6"
+            name: "Xiangyi",
+            backColor: "#313549"
           },
           {
-            name: "Item 7",
-            description: "Description for Item 7"
+            name: "Xiangyi",
+            backColor: "#313549"
           },
           {
-            name: "Item 8",
-            description: "Description for Item 8"
+            name: "Xiangyi",
+            backColor: "#313549"
           },
           {
-            name: "Item 9",
-            description: "Description for Item 9"
+            name: "Xiangyi",
+            backColor: "#313549"
           },
           {
-            name: "Item 10",
-            description: "Description for Item 10"
+            name: "Xiangyi",
+            backColor: "#313549"
           },
           {
-            name: "Item 11",
-            description: "Description for Item 11"
+            name: "Xiangyi",
+            backColor: "#313549"
           },
           {
-            name: "Item 12",
-            description: "Description for Item 12"
+            name: "Xiangyi",
+            backColor: "#313549"
           },
           {
-            name: "Item 13",
-            description: "Description for Item 13"
+            name: "Xiangyi",
+            backColor: "#313549"
           },
           {
-            name: "Item 14",
-            description: "Description for Item 14"
+            name: "Xiangyi",
+            backColor: "#313549"
           },
           {
-            name: "Item 15",
-            description: "Description for Item 15"
+            name: "Xiangyi",
+            backColor: "#313549"
           },
           {
-            name: "Item 16",
-            description: "Description for Item 16"
-          }
+            name: "Xiangyi",
+            backColor: "#313549"
+          },
+          {
+            name: "Xiangyi",
+            backColor: "#313549"
+          },
+          {
+            name: "Xiangyi",
+            backColor: "#313549"
+          },
+          {
+            name: "Xiangyi",
+            backColor: "#313549"
+          },
         ]
       };
     },

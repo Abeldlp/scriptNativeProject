@@ -1,6 +1,6 @@
 <template lang="html">
     <TabView androidTabsPosition="bottom">
-        <TabViewItem title="Home">
+        <TabViewItem title="Menu">
             <Frame id="items">
                 <Items/>
             </Frame>
@@ -17,6 +17,18 @@
                 <Search/>
             </Frame>
         </TabViewItem>
+
+        <TabViewItem title="Client">
+            <Frame id="client">
+                <Client/>
+            </Frame>
+        </TabViewItem>
+        
+        <TabViewItem title="Settings">
+            <Frame id="settings">
+                <Settings/>
+            </Frame>
+        </TabViewItem>
     </TabView>
 </template>
 
@@ -24,12 +36,16 @@
   import Items from "./Items.vue";
   import Browse from "./Browse.vue";
   import Search from "./Search.vue";
+  import Client from "./Client.vue";
+  import Settings from "./Settings.vue";
 
   export default {
     components: {
       Items,
       Browse,
-      Search
+      Search,
+      Client,
+      Settings
     }
   };
 </script>
