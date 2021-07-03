@@ -6,13 +6,13 @@
             </Frame>
         </TabViewItem>
 
-        <TabViewItem title="Browse">
+        <TabViewItem title="Tafels">
             <Frame id="browse">
                 <Browse/>
             </Frame>
         </TabViewItem>
 
-        <TabViewItem title="Search">
+        <TabViewItem title="Order">
             <Frame id="search">
                 <Search/>
             </Frame>
@@ -23,7 +23,7 @@
                 <Client/>
             </Frame>
         </TabViewItem>
-        
+
         <TabViewItem title="Settings">
             <Frame id="settings">
                 <Settings/>
