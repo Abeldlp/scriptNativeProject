@@ -12,9 +12,9 @@
           borderWidth="0 0 2 0"
           borderColor="#878787"
         >
-          <StackLayout class="search_bar" orientation="horizontal" iosOverflowSafeArea="true">
+          <StackLayout class="search_bar" orientation="horizontal">
             <Image src="~/images/sync-32.png" stretch="aspectFill" height="10%" width="10%" />
-            <TextField :text="searchTerm" hint="Zoeken..." width="85%" style="border-color:white;"/>
+            <TextField v-model="searchTerm" hint="Zoeken..." width="85%" style="border-color:white;" @textChange="filterProducts"/>
           </StackLayout>
           <StackLayout orientation="horizontal" class="sub_menu" width="100%">
             <StackLayout orientation="horizontal" class="bezorgen" width="60%">
@@ -32,10 +32,10 @@
           </StackLayout>
         </StackLayout>
 
-        <ScrollView orientation="vertical" paddingTop="35px" marginLeft="15px" marginRight="15px">
+        <ScrollView orientation="vertical" paddingTop="30px" marginLeft="15px" marginRight="15px" height="610vh">
            <FlexboxLayout flexWrap="wrap" justifyContent="space-between" alignItems="center" width="100%">
              <FlexboxLayout
-               v-for="(item, index) in items"
+               v-for="(item, index) in filtered"
                justifyContent="center"
                flexDirection="column"
                alignItems="flex-start"
@@ -54,7 +54,7 @@
                fontWeight="bold"
                />
                <label 
-               :text="'$ ' + item.price" 
+               :text="'€ ' + item.price" 
                textAlignment="center"
                color="white" />
              </FlexboxLayout>
@@ -75,79 +75,98 @@
         bezorgen: true,
         hamburguer: true,
         grid: false,
+        filtered : [],
         items: [
           {
-            name: "Xiangyi",
+            name: "PATAT",
             price: 2.34,
             backColor: "#313549"
           },
           {
-            name: "Xiangyi",
+            name: "PATAT MET",
             price: 2.34,
             backColor: "#313549"
           },
           {
-            name: "Xiangyi",
+            name: "PATAAT OORLOG",
             price: 2.34,
             backColor: "#313549"
           },
           {
-            name: "Xiangyi",
+            name: "PATAT JOPPIE",
             price: 2.34,
             backColor: "#313549"
           },
           {
-            name: "Xiangyi",
-            price: 2.34,
-            backColor: "#313549"
-          },
-          {
-            name: "Xiangyi",
+            name: "FRINKADEL",
             price: 2.34,
             backColor: "#E06633"
           },
           {
-            name: "Xiangyi",
+            name: "KROKET",
             price: 2.34,
             backColor: "#E06633"
           },
           {
-            name: "Abel",
+            name: "KASSOUFLE",
             price: 2.34,
             backColor: "#E06633"
           },
           {
-            name: "Xiangyi",
+            name: "SATEROL",
             price: 2.34,
             backColor: "#E06633"
           },
           {
-            name: "Xiangyi",
+            name: "HAMBURGER",
+            price: 2.34,
+            backColor: "#E06633"
+          },
+          {
+            name: "COCA-COLA ZERO",
             price: 2.34,
             backColor: "#5332DE"
           },
           {
-            name: "Xiangyi",
+            name: "7 UP",
             price: 2.34,
             backColor: "#5332DE"
           },
           {
-            name: "Xiangyi",
+            name: "COCA-COLA LIGHT",
             price: 2.34,
             backColor: "#5332DE"
           },
           {
-            name: "Xiangyi",
+            name: "PEPSI",
             price: 2.34,
             backColor: "#5332DE"
           },
           {
-            name: "Xiangyi",
+            name: "APPEL SAP",
+            price: 2.34,
+            backColor: "#5332DE"
+          },
+          {
+            name: "COCA-COLA LIGHT",
+            price: 2.34,
+            backColor: "#5332DE"
+          },
+          {
+            name: "PEPSI",
+            price: 2.34,
+            backColor: "#5332DE"
+          },
+          {
+            name: "APPEL SAP",
             price: 2.34,
             backColor: "#5332DE"
           }
         ]
       };
+    },
+    mounted(){
+      this.filtered = this.items
     },
     methods: {
       onItemTap(args) {
@@ -162,10 +181,15 @@
           }
         });
       },
-      checkItem(item){
-        item != item
+      filterProducts(){
+        if(this.searchTerm === ''){
+          return this.filtered =  this.items
+        }
+        return this.filtered =  this.items.filter(product => {
+          return product.name.includes(this.searchTerm.toUpperCase())
+        })
       }
-    }
+    },
   };
 </script>
 
@@ -231,29 +255,3 @@
 
 
 </style>
-
-
-        // <ScrollView orientation="vertical">
-        //   <WrapLayout orientation="horizontal">
-        //     <StackLayout
-        //       v-for="(item, index) in items"
-        //       orientation="vertical"
-        //       :key="index" 
-        //       width="48%" 
-        //       height="200px" 
-        //       marginLeft="10px"
-        //       marginBottom="15px"
-        //       borderRadius="10px"
-        //       :backgroundColor="item.backColor" 
-        //     >
-        //       <label 
-        //       :text="item.name" 
-        //       textAlignment="center"
-        //       color="white" />
-        //       <label 
-        //       :text="item.price" 
-        //       textAlignment="center"
-        //       color="white" />
-        //     </StackLayout>
-        //   </WrapLayout>
-        // </ScrollView>
